@@ -1,0 +1,8 @@
+.cats {
+    margin-left: 3vw;
+    margin-right: 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 3vw;
+}

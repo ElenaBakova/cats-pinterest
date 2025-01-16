@@ -1,0 +1,20 @@
+.heart-wrapper:hover .heart-filled {
+    display: block;
+    cursor: pointer;
+}
+
+.heart-wrapper:hover .heart-outlined {
+    display: none;
+}
+
+.heart-wrapper-clicked .heart-outlined {
+    display: none;
+}
+
+.heart-wrapper-clicked .heart-filled {
+    display: block;
+}
+
+.heart-filled {
+    display: none;
+}
