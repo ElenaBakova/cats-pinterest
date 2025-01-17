@@ -1,28 +1,38 @@
-import {useCallback, useEffect, useState} from "react";
-import './Cats.css'
+import {useCallback, useEffect, useRef, useState} from "react";
+import '../../styles/Cats.css'
 import CatCard from "../CatCard/CatCard.tsx";
 import Loader from "../Loader/Loader.tsx";
 import useFetchData from "../../hooks/useFetchData.ts";
 import Message from "../Message/Message.tsx";
+import {fetchMoreCats} from "../../utils/TheCatApi.ts";
 
 const Cats = () => {
     const [page, setPage] = useState<number>(1);
-    const {isLoading, error, hasMore, items} = useFetchData(page);
+    const bottom = useRef<HTMLDivElement>(null);
+    const {isLoading, error, hasMore, items} = useFetchData(page, fetchMoreCats);
 
-    const handleScroll = useCallback(() => {
+    const handleObserver = useCallback((entries: IntersectionObserverEntry[]) => {
         if (isLoading) {
             return;
         }
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || !hasMore) {
-            return;
+        if (entries[0].isIntersecting) {
+            setPage(prevPage => prevPage + 1);
         }
-        setPage(prevPage => prevPage + 1);
-    }, [hasMore, isLoading])
+    }, [isLoading]);
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [handleScroll]);
+        const option = {
+            rootMargin: "20px",
+            threshold: 0.5
+        };
+        const observer = new IntersectionObserver(handleObserver, option);
+        if (bottom.current) {
+            observer.observe(bottom.current)
+        }
+        return () => {
+            observer.disconnect();
+        };
+    }, [handleObserver]);
 
     return (
         <>
@@ -31,13 +41,13 @@ const Cats = () => {
                 <div className="cats">
                     {items.map((item, index) => (
                         <div key={index}>
-                            <CatCard url={item.url} index={index}/>
+                            <CatCard url={item.url} id={item.id}/>
                         </div>
-
                     ))}
                 </div>
             }
             {hasMore && !error && <Loader/>}
+            {!error && !isLoading && <div ref={bottom}/>}
         </>
     );
 }
