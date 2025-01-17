@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from "react";
 import './Cats.css'
 import CatCard from "../CatCard/CatCard.tsx";
 import Loader from "../Loader/Loader.tsx";
-import useFetchData from "../../hooks/UseFetchData.ts";
+import useFetchData from "../../hooks/useFetchData.ts";
 import Message from "../Message/Message.tsx";
 
 const Cats = () => {
