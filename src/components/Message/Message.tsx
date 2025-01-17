@@ -1,13 +1,14 @@
-import "./WildcardRoute.css"
+import "./Message.css"
 
-const WildcardRoute = () => {
+const Message = ({text}: { text: string }) => {
     return (
         <div className="wildcard-wrapper">
             <img src={"/kitty.png"} alt={"Kitty"} className="kitty-png"/>
             <p className={"text-field"}>
-                Такой страницы нет :(
+                {text}
             </p>
         </div>
     );
 }
-export default WildcardRoute;
+
+export default Message;
