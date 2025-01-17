@@ -1,58 +1,44 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import './Cats.css'
-import {fetchMoreCats} from "../../utils/TheCatApi.ts";
 import CatCard from "../CatCard/CatCard.tsx";
-
-interface ImageItem {
-    id: string;
-    url: string;
-    width: number;
-    height: number;
-}
+import Loader from "../Loader/Loader.tsx";
+import useFetchData from "../../hooks/UseFetchData.ts";
+import Message from "../Message/Message.tsx";
 
 const Cats = () => {
-    const [items, setItems] = useState<ImageItem[]>([]);
-    const [hasMore, setHasMore] = useState<boolean>(true);
     const [page, setPage] = useState<number>(1);
+    const {isLoading, error, hasMore, items} = useFetchData(page);
 
-    useEffect(() => {
-        fetchMoreData();
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
+        if (isLoading) {
+            return;
+        }
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || !hasMore) {
             return;
         }
-        fetchMoreData();
-    };
+        setPage(prevPage => prevPage + 1);
+    }, [hasMore, isLoading])
 
-    const fetchMoreData = async () => {
-        try {
-            const response = await fetchMoreCats();
-            const data = await response.json();
-            console.log(data);
-            setItems(prevItems => [...prevItems, ...data]);
-            console.log(page);
-            setPage(prevPage => prevPage + 1);
-            if (data.length === 0) {
-                setHasMore(false);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
 
     return (
-        <div className="cats">
-            {items.map((item, index) => (
-                <div key={index}>
-                    <CatCard url={item.url} index={index} />
-                </div>
+        <>
+            {error && <Message text={"Не смогли получить котиков :("}/>}
+            {!error &&
+                <div className="cats">
+                    {items.map((item, index) => (
+                        <div key={index}>
+                            <CatCard url={item.url} index={index}/>
+                        </div>
 
-            ))}
-        </div>
+                    ))}
+                </div>
+            }
+            {hasMore && !error && <Loader/>}
+        </>
     );
 }
 export default Cats;
