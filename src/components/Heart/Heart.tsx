@@ -1,5 +1,6 @@
 import "./Heart.css";
 import useStorage from "../../hooks/useStorage.ts";
+import {useState} from "react";
 
 interface HeartProps {
   id: string;
@@ -8,12 +9,17 @@ interface HeartProps {
 const Heart = ({ id }: HeartProps) => {
   const { favourites, setFavourites } = useStorage();
   const clicked: boolean = favourites.includes(id);
+  const [animate, setAnimate] = useState<boolean>(clicked);
 
   return (
     <div
-      className={`heart-wrapper-${clicked ? "clicked" : ""}`}
+      className={`heart-wrapper${clicked ? " clicked" : ""}${animate ? " animate" : ""}`}
+      onAnimationEnd={() => setAnimate(false)}
       id={id}
-      onClick={() => setFavourites(id)}
+      onClick={() => {
+        setFavourites(id);
+        setAnimate(true);
+      }}
     >
       <img
         src={"/heart-outlined.png"}
