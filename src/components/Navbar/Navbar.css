@@ -1,28 +1,28 @@
 .navbarWrapper {
-    width: 100%;
-    min-height: 8vh;
-    height: fit-content;
-    padding: 0 5vw;
-    position: sticky;
-    background-color: rgba(33, 150, 243, 1);
-    box-shadow: rgba(0, 0, 0, 0.24) 0 4px 4px 0;
+  width: 100%;
+  min-height: 8vh;
+  height: fit-content;
+  padding: 0 5vw;
+  position: sticky;
+  background-color: rgba(33, 150, 243, 1);
+  box-shadow: rgba(0, 0, 0, 0.24) 0 4px 4px 0;
 }
 
 nav.navbar a {
-    padding: 3vh 3vw;
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.7);
+  padding: 3vh 3vw;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
 }
 nav.navbar a:hover {
-    background-color: rgba(30, 136, 229, 1);
+  background-color: rgba(30, 136, 229, 1);
 }
 .navbar a.active {
-    color: rgba(255, 255, 255);
-    background-color: rgba(30, 136, 229, 1);
+  color: rgba(255, 255, 255);
+  background-color: rgba(30, 136, 229, 1);
 }
 
 button {
-    height: 100%;
-    align-content: center;
-    min-height: 64px;
+  height: 100%;
+  align-content: center;
+  min-height: 64px;
 }

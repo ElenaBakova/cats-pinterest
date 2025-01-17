@@ -1,13 +1,13 @@
-import {createContext} from "react";
+import { createContext } from "react";
 
 export interface FavouritesType {
-    favourites: string[];
-    setFavourites: (newItem: string) => void;
+  favourites: string[];
+  setFavourites: (newItem: string) => void;
 }
 
 const FavouritesContext = createContext<FavouritesType>({
-    favourites: [],
-    setFavourites: () => {}
+  favourites: [],
+  setFavourites: () => {},
 });
 
 export default FavouritesContext;

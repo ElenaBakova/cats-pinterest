@@ -1,15 +1,15 @@
 .message-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
 }
 
 .text-field {
-    font-size: 2rem;
-    font-weight: 200;
+  font-size: 2rem;
+  font-weight: 200;
 }
 
 .kitty-png {
-    max-width: 50%;
+  max-width: 50%;
 }

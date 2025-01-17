@@ -1,34 +1,36 @@
 .catCard {
-    height: 225px;
-    width: 225px;
-    overflow: hidden;
-    position: relative;
+  height: 225px;
+  width: 225px;
+  overflow: hidden;
+  position: relative;
 
-    transform: scale(1);
-    transition: transform 0.2s ease-in-out;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
 }
 
 .catCard:hover {
-    transition: transform 0.2s ease-in-out;
-    transform: scale(1.14);
-    box-shadow: 0 9px 18px 0 #0000002E, 0 6px 5px 0 #0000003D;
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.14);
+  box-shadow:
+    0 9px 18px 0 #0000002e,
+    0 6px 5px 0 #0000003d;
 }
 
 .catCard:hover .heart {
-    display: block;
+  display: block;
 }
 
 .heart {
-    display: none;
-    width: 48px;
-    height: 48px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+  display: none;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .catCard .cat-image {
-    height: 225px;
-    min-width: 100%;
-    min-height: 100%;
+  height: 225px;
+  min-width: 100%;
+  min-height: 100%;
 }

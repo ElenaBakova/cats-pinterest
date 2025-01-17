@@ -1,10 +1,10 @@
 .cats {
-    margin-left: 3vw;
-    margin-right: 3vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0 5vw 0 5vw;
-    row-gap: 3vw;
-    column-gap: 4vh;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 5vw 0 5vw;
+  row-gap: 3vw;
+  column-gap: 4vh;
 }
