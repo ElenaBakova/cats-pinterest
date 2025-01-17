@@ -1,8 +1,8 @@
 import {Navigate, Route, Routes} from "react-router-dom"
 
-import Cats from "../Cats/Cats.tsx";
-import Favourites from "../Favourites/Favourites.tsx";
-import Message from "../Message/Message.tsx";
+import Cats from "./Cats/Cats.tsx";
+import Favourites from "./Favourites/Favourites.tsx";
+import Message from "./Message/Message.tsx";
 
 const Main = () => {
     return (

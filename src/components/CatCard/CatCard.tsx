@@ -3,14 +3,14 @@ import Heart from "../Heart/Heart.tsx";
 
 interface CatCardProps {
     url: string;
-    index: number;
+    id: string;
 }
 
-const CatCard = ({url, index}: CatCardProps) => {
+const CatCard = ({url, id}: CatCardProps) => {
     return (
         <div className={'catCard'}>
             <div className="heart">
-                <Heart index={`${index}`} />
+                <Heart id={id} />
             </div>
             <img src={url} alt={`cat_${url}`} className="cat-image"/>
         </div>
