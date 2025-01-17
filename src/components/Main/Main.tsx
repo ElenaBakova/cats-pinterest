@@ -2,7 +2,7 @@ import {Navigate, Route, Routes} from "react-router-dom"
 
 import Cats from "../Cats/Cats.tsx";
 import Favourites from "../Favourites/Favourites.tsx";
-import WildcardRoute from "../WildcardRoute/WildcardRoute.tsx";
+import Message from "../Message/Message.tsx";
 
 const Main = () => {
     return (
@@ -11,7 +11,7 @@ const Main = () => {
                 <Route path="" element={<Navigate to={"cats"}/>}/>
                 <Route path="cats" element={<Cats/>}/>
                 <Route path="favourites" element={<Favourites/>}/>
-                <Route path="*" element={<WildcardRoute/>}/>
+                <Route path="*" element={<Message text={"Такой страницы нет :("} />}/>
             </Routes>
         </div>
     );
