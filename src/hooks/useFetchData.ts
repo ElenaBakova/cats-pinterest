@@ -1,4 +1,3 @@
-import {fetchMoreCats} from "../utils/TheCatApi.ts";
 import {useCallback, useEffect, useState} from "react";
 
 interface ImageItem {
@@ -8,7 +7,7 @@ interface ImageItem {
     height: number;
 }
 
-const useFetchData = (page: number) => {
+const useFetchData = (page: number, fetchMoreCats: () => Promise<Response>) => {
     const [items, setItems] = useState<ImageItem[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -19,9 +18,7 @@ const useFetchData = (page: number) => {
             setIsLoading(true);
             const response = await fetchMoreCats();
             const data = await response.json();
-            // console.log(data);
             setItems(prevItems => [...prevItems, ...data]);
-            // console.log(page);
             if (data.length === 0) {
                 setHasMore(false);
             }
@@ -31,7 +28,7 @@ const useFetchData = (page: number) => {
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, [fetchMoreCats]);
 
     useEffect(() => {
         if (page === 1) {
