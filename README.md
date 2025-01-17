@@ -11,10 +11,11 @@
 - добавлена бесконечная прокрутка
 
 ### Для запуска локально
+
 Склонируйте репозиторий к себе в директорию: \
 `git clone https://github.com/ElenaBakova/cats-pinterest`
 
-* Установите NodeJS и NPM.
+- Установите NodeJS и NPM.
 
 Выполните \
 `npm install`

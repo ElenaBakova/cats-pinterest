@@ -9,17 +9,11 @@ const Heart = ({ id }: HeartProps) => {
   const { favourites, setFavourites } = useStorage();
   const clicked: boolean = favourites.includes(id);
 
-  const handleClick = () => {
-    setFavourites(id);
-    console.log(id);
-    console.log(localStorage);
-  };
-
   return (
     <div
       className={`heart-wrapper-${clicked ? "clicked" : ""}`}
       id={id}
-      onClick={handleClick}
+      onClick={() => setFavourites(id)}
     >
       <img
         src={"/heart-outlined.png"}
