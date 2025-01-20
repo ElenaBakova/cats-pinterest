@@ -1,10 +1,9 @@
 .cats {
   margin-left: 3vw;
   margin-right: 3vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 0 5vw 0 5vw;
-  row-gap: 3vw;
-  column-gap: 4vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 225px);
+  justify-content: space-evenly;
+  row-gap: 3vh;
+  column-gap: 2vw;
 }
