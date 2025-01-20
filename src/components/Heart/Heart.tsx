@@ -1,6 +1,6 @@
 import "./Heart.css";
 import useStorage from "../../hooks/useStorage.ts";
-import {useState} from "react";
+import { useState } from "react";
 
 interface HeartProps {
   id: string;
