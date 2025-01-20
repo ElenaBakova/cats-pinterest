@@ -22,12 +22,12 @@ const Heart = ({ id }: HeartProps) => {
       }}
     >
       <img
-        src={"/heart-outlined.png"}
+        src={`${import.meta.env.BASE_URL}/heart-outlined.png`}
         alt={"heart-outlined"}
         className={"heart-outlined"}
       />
       <img
-        src={"/heart-filled.png"}
+        src={`${import.meta.env.BASE_URL}/heart-filled.png`}
         alt={"heart-filled"}
         className={"heart-filled"}
       />
